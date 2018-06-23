@@ -1,49 +1,37 @@
-$(document).ready(function() {
-    //Varriables
+$(document).ready(function () {
+    //Variables
     var gLeft = 9;
-    //Inlcusions
+    var letterList = "abcdefghijklmnopqrstuvwxyz".split('');
+    var chosenLetter = "";
+    var win = 0;
+    var userGuess = "";
+
+    //Inclusions
     $("#left").html(gLeft);
+    $("#winGuess").html(win);
 
+    chosenLetter = letterList[Math.floor(Math.random() * letterList.length)];
+    console.log(chosenLetter);
 
-
-
-
-
-// Guesses Left Function
-$(function(){
-    $(document).on('keypress', function(){
-        if (gLeft<1) {
+    // Guesses so far
+    $(document).on('keypress', function (event) {
+        if (gLeft < 1) {
             gLeft = 9;
         }
         gLeft = gLeft - 1;
         $("#left").html(gLeft);
-        
-    });
-});
 
-// Guesses so far
-$(function(){
-    $(document).on('keypress', function(event){
-        var userGuess = event.key;
+        userGuess = event.key;
         if (gLeft > 0) {
-        $("#gSoFar").append(" " + userGuess);
-        console.log(userGuess);
+            $("#gSoFar").append(" " + userGuess);
         }
         else {
-        $("#gSoFar").text("Your Guesses so far:");
+            $("#gSoFar").text("Your Guesses so far:");
+        }
+        if (chosenLetter === userGuess) {
+            win++;
+            $('#winGuess').html(win);
+
         }
     });
-
-});
-
-    
-    // This function is run whenever the user presses a key.
-    //document.onkeyup = function(event) {
-
-        // Determines which key was pressed.
-        //var userGuess = event.key;
-  
-
-
-
 });
