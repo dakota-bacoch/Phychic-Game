@@ -33,14 +33,16 @@ $(document).ready(function () {
         if (chosenLetter === userGuess) {
             win++;
             $('#winGuess').html(win);
-            chosenLetter = letterList[Math.floor(Math.random() * letterList.length)]
+            chosenLetter = letterList[Math.floor(Math.random() * letterList.length)];
             $("#gSoFar").text("Your Guesses so far:");
-            gLeft=9;
+            gLeft = 9;
             $('#left').html(gLeft);
             console.log(chosenLetter);
 
         }
-        else if (gLeft===0)   {
+        else if (gLeft === 0) {
+            chosenLetter = letterList[Math.floor(Math.random() * letterList.length)];
+            console.log(chosenLetter);
             loss++;
             $("#loss").html(loss);
         }
