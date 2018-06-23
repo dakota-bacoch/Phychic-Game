@@ -5,10 +5,12 @@ $(document).ready(function () {
     var chosenLetter = "";
     var win = 0;
     var userGuess = "";
+    var loss = 0;
 
     //Inclusions
     $("#left").html(gLeft);
     $("#winGuess").html(win);
+    $("#loss").html(loss);
 
     chosenLetter = letterList[Math.floor(Math.random() * letterList.length)];
     console.log(chosenLetter);
@@ -31,7 +33,16 @@ $(document).ready(function () {
         if (chosenLetter === userGuess) {
             win++;
             $('#winGuess').html(win);
+            chosenLetter = letterList[Math.floor(Math.random() * letterList.length)]
+            $("#gSoFar").text("Your Guesses so far:");
+            gLeft=9;
+            $('#left').html(gLeft);
+            console.log(chosenLetter);
 
+        }
+        else if (gLeft===0)   {
+            loss++;
+            $("#loss").html(loss);
         }
     });
 });
